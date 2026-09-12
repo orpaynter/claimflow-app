@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #10141a;
+  --color-surface: #1c222c;
+  --color-fg: #f4f7fb;
+  --color-muted: #c5ccd6;
+  --color-subtle: #a8b0bb;
+  --color-accent: #e07a3a;
+  --color-accent-fg: #10141a;
+  --color-border: color-mix(in oklab, var(--color-fg) 18%, transparent);
+  --color-ok: #8fb89a;
+  --color-danger: #e07a68;
+  --color-navy: #243552;
+  --color-ring: #e07a3a;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-border: 0 0 0 1px color-mix(in oklab, var(--color-fg) 10%, transparent);
+  --shadow-border-hover: 0 0 0 1px color-mix(in oklab, var(--color-fg) 16%, transparent);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 17px;
+  }
+
+  html,
+  body,
+  #app {
+    height: 100%;
+    min-height: 100dvh;
+    overflow: hidden;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--color-muted) 0%,
+    var(--color-fg) 45%,
+    var(--color-muted) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes hail-breathe {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.leaflet-container {
+  background: #10141a;
+  font-family: var(--font-sans);
+}
+
+.leaflet-tooltip.lot-chip {
+  background: color-mix(in oklab, #10141a 82%, transparent);
+  color: #e8edf2;
+  border: 1px solid color-mix(in oklab, #e8edf2 22%, transparent);
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.leaflet-tooltip.lot-chip.e1 {
+  background: #2a4a6e;
+  color: #e8edf2;
+}
+
+.leaflet-tooltip.lot-chip.e2 {
+  background: #c4a35a;
+  color: #10141a;
+}
+
+.leaflet-tooltip.lot-chip.e3 {
+  background: #c56a32;
+  color: #10141a;
+  border-color: #e8edf2;
+}
+
+.leaflet-tooltip.lot-chip.sel {
+  background: #e8edf2;
+  color: #10141a;
+  border-color: #10141a;
+  font-weight: 600;
+}
+
+.leaflet-tooltip.street-chip {
+  background: color-mix(in oklab, #10141a 72%, transparent);
+  color: #e8edf2;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 9px;
+}
+
+.leaflet-tooltip.storm-chip {
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+
+.leaflet-div-icon.street-div {
+  background: none;
+  border: none;
+}
+
+.street-div span {
+  display: inline-block;
+  transform: translate(-50%, -80%);
+  background: color-mix(in oklab, #10141a 78%, transparent);
+  color: #e8edf2;
+  border: 1px solid color-mix(in oklab, #e8edf2 22%, transparent);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  padding: 2px 6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hail-core {
+  animation: hail-breathe 1.5s ease-in-out infinite;
+}
+
+.status-idle {
+  color: #8b95a3;
+}
+.status-exposure {
+  color: #5b8fbf;
+}
+.status-needed {
+  color: #c4a35a;
+}
+.status-remote {
+  color: #c56a32;
+}
+.status-field {
+  color: #c56a32;
+}
+.status-reviewed {
+  color: #c56a32;
+}
+.status-approved {
+  color: #6a8f7a;
+}
+.status-carrier {
+  color: #8a74a8;
+}
+.status-ok {
+  color: #6a8f7a;
+}
+.status-closed {
+  color: #66707c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-text,
+  .hail-core {
+    animation: none;
+  }
+}
