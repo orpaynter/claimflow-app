@@ -16,7 +16,7 @@ export function coach(phase: Phase): Coach {
         step: 1,
         of: 4,
         here: "Your roof",
-        next: "Name, address, photos. Then we find the house.",
+        next: "Name and address. Then we find the house.",
         action: null,
         actionKind: null,
       };
@@ -25,7 +25,7 @@ export function coach(phase: Phase): Coach {
         step: 1,
         of: 4,
         here: "Finding the house",
-        next: "Geocoding the address and pulling real building outlines.",
+        next: "Matching the pin to a real outline.",
         action: null,
         actionKind: null,
       };
@@ -34,7 +34,7 @@ export function coach(phase: Phase): Coach {
         step: 1,
         of: 4,
         here: "Impact zone",
-        next: "Tap a footprint. Colors are exposure confidence, not proven damage.",
+        next: "Tap the lot. Color is exposure, not proven damage.",
         action: "Open this house",
         actionKind: "enter",
       };
@@ -42,8 +42,8 @@ export function coach(phase: Phase): Coach {
       return {
         step: 2,
         of: 4,
-        here: "3D digital twin",
-        next: "Footprint model unless a measurement provider is on file. Watching is not approval.",
+        here: "The house",
+        next: "A footprint model. Watching is not approval.",
         action: null,
         actionKind: null,
       };
@@ -52,7 +52,7 @@ export function coach(phase: Phase): Coach {
         step: 2,
         of: 4,
         here: "Storm replay",
-        next: "Watch the modeled damage, or skip straight to the estimate.",
+        next: "Modeled strikes. Skip anytime.",
         action: "Skip replay",
         actionKind: "skip",
       };
@@ -61,7 +61,7 @@ export function coach(phase: Phase): Coach {
         step: 3,
         of: 4,
         here: "Lock the package",
-        next: "Read the draft. Your name freezes it. Nothing files itself.",
+        next: "Read the draft. Your name freezes it.",
         action: "Lock package",
         actionKind: "approve",
       };
@@ -89,7 +89,7 @@ export function coach(phase: Phase): Coach {
         step: 4,
         of: 4,
         here: "Package locked",
-        next: "Your name is on it. Open the report, or start another roof.",
+        next: "Your name is on it. Open the report or start another roof.",
         action: "Open report",
         actionKind: "report",
       };

@@ -74,8 +74,8 @@ function Home() {
 
 function TrackBanner() {
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-[5.5rem] z-20 flex justify-center px-4">
-      <p className="shimmer-text rounded-full bg-surface/90 px-4 py-2 text-sm shadow-border">
+    <div className="pointer-events-none absolute inset-x-0 top-[8.5rem] z-20 flex justify-center px-5">
+      <p className="shimmer-text rounded-full bg-surface px-5 py-2.5 text-base shadow-border">
         Finding that address.
       </p>
     </div>

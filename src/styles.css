@@ -25,6 +25,11 @@
 
   --shadow-border: 0 0 0 1px color-mix(in oklab, var(--color-fg) 10%, transparent);
   --shadow-border-hover: 0 0 0 1px color-mix(in oklab, var(--color-fg) 16%, transparent);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --motion-slow: 400ms;
 }
 
 @layer base {
@@ -47,8 +52,9 @@
   body {
     font-family: var(--font-sans);
     font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.5;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: -0.011em;
   }
 
   button:not(:disabled),
@@ -64,6 +70,60 @@
 
   p {
     text-wrap: pretty;
+  }
+}
+
+.fade-copy {
+  animation: copy-in var(--motion-slow) var(--ease-out) both;
+}
+
+.sheet-in {
+  animation: sheet-in var(--motion-slow) var(--ease-out) both;
+}
+
+.stagger > * {
+  animation: copy-in var(--motion-slow) var(--ease-out) both;
+}
+.stagger > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.stagger > *:nth-child(2) {
+  animation-delay: 70ms;
+}
+.stagger > *:nth-child(3) {
+  animation-delay: 140ms;
+}
+.stagger > *:nth-child(4) {
+  animation-delay: 210ms;
+}
+.stagger > *:nth-child(5) {
+  animation-delay: 280ms;
+}
+.stagger > *:nth-child(n + 6) {
+  animation-delay: 320ms;
+}
+
+@keyframes copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -112,8 +172,8 @@
   border-radius: 4px;
   box-shadow: none;
   font-family: var(--font-sans);
-  font-size: 10px;
-  padding: 2px 6px;
+  font-size: 12px;
+  padding: 3px 8px;
   white-space: nowrap;
 }
 
@@ -166,9 +226,9 @@
   border: 1px solid color-mix(in oklab, #e8edf2 22%, transparent);
   border-radius: 4px;
   font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  padding: 2px 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -210,7 +270,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .shimmer-text,
-  .hail-core {
+  .hail-core,
+  .fade-copy,
+  .sheet-in,
+  .stagger > * {
     animation: none;
   }
 }

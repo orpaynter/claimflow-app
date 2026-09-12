@@ -81,17 +81,20 @@ export function MeasurePanel() {
   });
 
   return (
-    <aside className="pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[46dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-xl bg-surface shadow-border">
+    <aside className="sheet-in pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[48dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-xl bg-surface shadow-border">
+      <div className="flex justify-center pt-2">
+        <span className="h-1 w-10 rounded-full bg-border" />
+      </div>
       <div className="px-4 pt-4 pb-2">
-        <p className="text-sm font-semibold text-muted">Property command</p>
-        <p className="font-display mt-1 text-xl text-fg">
+        <p className="text-sm text-muted">Property command</p>
+        <p className="font-display mt-1 text-xl tracking-tight text-fg">
           {spec.number} {spec.street}
         </p>
         <p className="text-sm text-muted">
           {sourceLabel(spec.source)}
           {spec.lat != null ? ` · ${spec.lat.toFixed(5)}, ${spec.lon?.toFixed(5)}` : ""}
         </p>
-        <p className="mt-2 text-sm leading-relaxed text-fg">{modelDisclaimer(spec.source)}</p>
+        <p className="mt-2 text-sm leading-6 text-muted">{modelDisclaimer(spec.source)}</p>
         <p className={cn("mt-2 text-sm font-semibold", CLAIM_STATUS.find((s) => s.id === status)?.tone)}>
           {labelOf(status)}
         </p>

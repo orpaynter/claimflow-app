@@ -39,16 +39,15 @@ export function SelectPanel() {
   const links = buildLinks(site.place, selected, site.zone);
 
   return (
-    <aside className="pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[42dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-xl bg-surface shadow-border">
-      <div className="px-4 pt-4 pb-2">
-        <p className="text-sm font-semibold text-muted">{stormName || "Hail cell"}</p>
-        <p className="font-display mt-1 text-xl text-fg">{site.place.city || site.place.displayName}</p>
-        <p className="text-sm text-muted">
-          {walking ? "Hail walking the block" : `${hit.length} lots in the swath`}
-          {` · ${site.zone.areaCode}`}
-        </p>
-        <p className="mt-2 text-sm leading-relaxed text-fg">
-          Exposure is not a damage determination. Open the house you want to inspect.
+    <aside className="sheet-in pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[44dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-xl bg-surface shadow-border">
+      <div className="flex justify-center pt-2">
+        <span className="h-1 w-10 rounded-full bg-border" />
+      </div>
+      <div className="px-5 pt-3 pb-3">
+        <p className="text-sm text-muted">{stormName || "Hail cell"}</p>
+        <p className="font-display mt-1 text-xl tracking-tight text-fg">{site.place.city || site.place.displayName}</p>
+        <p className="mt-2 text-sm leading-6 text-muted">
+          {walking ? "Hail walking the block." : `${hit.length} lots in the swath.`} Color is exposure, not proven damage.
         </p>
       </div>
       <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-3">
