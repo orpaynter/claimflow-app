@@ -60,27 +60,38 @@ export function nameStorm(seed: number): string {
   return `${name} ${n}`;
 }
 
-export function planStorm(spec: HouseSpec): DamageEvent[] {
+export function planStorm(
+  spec: HouseSpec,
+  cell?: { name?: string; event?: string; severity?: string },
+): DamageEvent[] {
   const rng = mulberry32(spec.seed ^ 0x9e3779b9);
-  const parts: PartId[] = ["roof", "windows", "siding"];
+  const event = `${cell?.event ?? ""} ${cell?.name ?? ""}`.toLowerCase();
+  const hail = /hail/.test(event);
+  const wind = /wind|thunder|tornado|squall|gale/.test(event);
+  const severe = cell?.severity === "severe" || /tornado/.test(event);
+  const parts: PartId[] = ["roof"];
+  if (hail || severe) parts.push("windows");
+  parts.push("siding");
   if (spec.hasChimney) parts.splice(1, 0, "chimney");
   if (spec.hasPorch) parts.push("porch");
-  if (spec.hasGarage) parts.push("garage");
-  if (spec.treeCount > 0) parts.push("trees");
-  if (spec.hasFence) parts.push("fence");
+  if (spec.hasGarage && (hail || severe)) parts.push("garage");
+  if (spec.treeCount > 0 && wind) parts.push("trees");
+  if (spec.hasFence && wind) parts.push("fence");
 
   const events: DamageEvent[] = [];
   const start = 3.6;
   const span = 12.5;
   parts.forEach((part, i) => {
     const t = start + ((i + rng() * 0.7) / parts.length) * span;
-    const severity = (rng() < 0.22 ? 3 : rng() < 0.55 ? 2 : 1) as 1 | 2 | 3;
+    let severity: 1 | 2 | 3 = severe ? 3 : hail && part === "roof" ? 2 : 1;
+    if (!severe && rng() < 0.18) severity = Math.min(3, severity + 1) as 1 | 2 | 3;
     const labels = LABELS[part];
+    const label = labels[Math.floor(rng() * labels.length)] as string;
     events.push({
       id: `${part}-${i}`,
       part,
       severity,
-      label: labels[Math.floor(rng() * labels.length)] as string,
+      label: cell?.name ? `${label} · ${cell.name}` : label,
       t: Math.round(t * 10) / 10,
       kind: "modeled",
     });
