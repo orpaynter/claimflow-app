@@ -177,8 +177,8 @@ export function buildSpecFromBuilding(
   const locality = [place.city, place.stateCode || place.state].filter(Boolean).join(", ");
   const address = [number, street, locality, place.postcode].filter(Boolean).join(", ");
   const base = buildSpec(address || place.displayName);
-  const width = clamp(building.widthM, 6.2, 14);
-  const depth = clamp(building.depthM, 5.2, 10.5);
+  const width = clamp(building.widthM, 6.2, 32);
+  const depth = clamp(building.depthM, 5.2, 24);
   const stories: 1 | 2 = building.levels >= 2 ? 2 : base.stories;
   const footprintSqft = Math.round(building.areaM2 * 10.764);
   const roofSqft = roofAreaSqft(building.areaM2, base.roofPitch);
@@ -207,6 +207,15 @@ export function buildSpecFromBuilding(
     source: building.source,
     areaCode,
     osmId: building.osmId,
-    notes: [sourceNote, base.notes, areaCode ? `territory ${areaCode}` : ""].filter(Boolean).join(" · "),
+    notes: [
+      sourceNote,
+      building.year ? `built ${building.year}` : "",
+      building.material ? `envelope ${building.material}` : "",
+      building.roofShape ? `roof ${building.roofShape}` : "",
+      base.notes,
+      areaCode ? `territory ${areaCode}` : "",
+    ]
+      .filter(Boolean)
+      .join(" · "),
   };
 }
