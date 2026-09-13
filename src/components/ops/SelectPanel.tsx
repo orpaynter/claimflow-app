@@ -1,4 +1,5 @@
 import { Home } from "lucide-react";
+import { useEffect } from "react";
 import { OutLinks } from "@/components/ops/OutLinks";
 import { Button } from "@/components/ui/button";
 import { HAIL_DURATION } from "@/lib/geo/hail";
@@ -13,6 +14,12 @@ export function SelectPanel() {
   const hailT = useLot((s) => s.hailT);
   const stormName = useLot((s) => s.stormName);
   const resetLot = useLot((s) => s.resetLot);
+
+  useEffect(() => {
+    if (!site?.matchedId) return;
+    const t = window.setTimeout(() => enterLot(), 500);
+    return () => window.clearTimeout(t);
+  }, [site?.matchedId, enterLot]);
 
   if (!site) return null;
   const walking = hailT < HAIL_DURATION;
@@ -47,7 +54,7 @@ export function SelectPanel() {
         <p className="text-sm text-muted">{stormName || "Hail cell"}</p>
         <p className="font-display mt-1 text-xl tracking-tight text-fg">{site.place.city || site.place.displayName}</p>
         <p className="mt-2 text-sm leading-6 text-muted">
-          {walking ? "Hail walking the block." : `${hit.length} lots in the swath.`} Color is exposure, not proven damage.
+          {walking ? "Opening the typed lot." : `${hit.length} lots in the swath.`} Color is exposure, not proven damage.
         </p>
       </div>
       <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-3">
