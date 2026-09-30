@@ -98,6 +98,13 @@ export const runGaccProduct = createServerFn({ method: "POST" })
 
     try {
       const bypass = process.env.AIA_VERCEL_PROTECTION_BYPASS_SECRET;
+      if (!bypass && base.includes("vercel.app")) {
+        return {
+          ok: false,
+          error:
+            "GACC bridge not configured: AIA preview protection bypass is missing on the ClaimFlow server.",
+        };
+      }
       const headers: Record<string, string> = {
         "Content-Type": "application/json",
         Accept: "application/json",
