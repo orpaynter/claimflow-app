@@ -15,11 +15,11 @@ export function Guide() {
         aria-label="Close field manual"
         onClick={() => setGuideOpen(false)}
       />
-      <article className="relative flex max-h-[82dvh] w-full max-w-lg flex-col overflow-hidden rounded-xl bg-surface shadow-border md:max-w-2xl lg:max-w-3xl">
+      <article role="dialog" aria-modal="true" aria-labelledby="claimflow-guide-title" className="relative flex max-h-[82dvh] w-full max-w-lg flex-col overflow-hidden rounded-xl bg-surface shadow-border md:max-w-2xl lg:max-w-3xl">
         <header className="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
           <div>
             <p className="text-sm font-semibold text-muted">Field manual</p>
-            <h2 className="font-display mt-1 text-2xl leading-tight text-fg">How ClaimFlow works</h2>
+            <h2 id="claimflow-guide-title" className="font-display mt-1 text-2xl leading-tight text-fg">How ClaimFlow works</h2>
           </div>
           <button
             type="button"
