@@ -97,9 +97,18 @@ export const runGaccProduct = createServerFn({ method: "POST" })
     };
 
     try {
+      const bypass = process.env.AIA_VERCEL_PROTECTION_BYPASS_SECRET;
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      };
+      if (bypass) {
+        headers["x-vercel-protection-bypass"] = bypass;
+      }
+
       const res = await fetch(base.replace(/\/$/, "") + "/gacc/e2e-01/run", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers,
         body: JSON.stringify(payload),
         signal: AbortSignal.timeout(20000),
       });
