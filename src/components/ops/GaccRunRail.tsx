@@ -15,7 +15,7 @@ export function GaccRunRail() {
   const passed = status === "passed" && run?.pass;
 
   return (
-    <aside className="pointer-events-auto absolute inset-x-3 top-[7.65rem] z-40 mx-auto max-w-2xl overflow-hidden rounded-lg bg-surface/96 shadow-border backdrop-blur-sm">
+    <aside className="pointer-events-auto absolute inset-x-3 top-[7.65rem] z-40 mx-auto max-w-2xl overflow-hidden rounded-lg bg-surface/96 shadow-border backdrop-blur-sm md:top-[7.2rem] md:max-w-3xl lg:max-w-5xl">
       <div className="flex min-h-12 items-center gap-3 px-3">
         {status === "running" ? (
           <LoaderCircle className="size-4 shrink-0 animate-spin text-accent" />
@@ -39,7 +39,7 @@ export function GaccRunRail() {
         {run ? (
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-md text-muted hover:text-fg"
+            className="inline-flex size-11 items-center justify-center rounded-md text-muted hover:text-fg"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Collapse GACC evidence" : "Expand GACC evidence"}
           >
@@ -83,7 +83,7 @@ export function GaccRunRail() {
               </p>
               <ol className="mt-2 space-y-2">
                 {run.stages.map((stage, index) => (
-                  <li key={stage.id} className="grid grid-cols-[1.5rem_7rem_1fr] gap-2 text-xs">
+                  <li key={stage.id} className="grid grid-cols-[1.5rem_minmax(6rem,9rem)_minmax(0,1fr)] gap-2 text-xs md:text-sm">
                     <span className="font-mono text-subtle">{String(index + 1).padStart(2, "0")}</span>
                     <span className="text-fg">{stage.label}</span>
                     <span className="truncate font-mono text-subtle" title={stage.evidence}>
