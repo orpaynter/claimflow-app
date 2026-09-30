@@ -81,7 +81,7 @@ export function MeasurePanel() {
   });
 
   return (
-    <aside className="sheet-in pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[48dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-xl bg-surface shadow-border">
+    <aside className="sheet-in pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[48dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-xl bg-surface shadow-border md:inset-x-4 md:bottom-24 md:max-h-[62dvh] md:max-w-3xl md:rounded-xl lg:top-[8.5rem] lg:right-4 lg:bottom-24 lg:left-auto lg:max-h-none lg:w-[min(34rem,42vw)] lg:rounded-xl">
       <div className="flex justify-center pt-2">
         <span className="h-1 w-10 rounded-full bg-border" />
       </div>
@@ -111,7 +111,7 @@ export function MeasurePanel() {
             type="button"
             onClick={() => setTab(t.id)}
             className={cn(
-              "min-h-10 shrink-0 rounded-full px-3 py-2 text-sm font-medium",
+              "min-h-11 shrink-0 rounded-full px-3 py-2 text-sm font-medium",
               tab === t.id ? "bg-accent text-accent-fg" : "text-muted hover:text-fg",
             )}
           >
@@ -119,7 +119,7 @@ export function MeasurePanel() {
           </button>
         ))}
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-4">
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-4 md:px-5">
         {tab === "overview" || tab === "measure" ? (
           <dl className="space-y-3 text-base">
             <div className="flex justify-between gap-3 border-t border-border pt-3">
