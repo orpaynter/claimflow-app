@@ -30,11 +30,11 @@ export function BookPanel() {
         aria-label="Close your houses"
         onClick={() => setBookOpen(false)}
       />
-      <aside className="relative flex max-h-[82dvh] w-full max-w-lg flex-col overflow-hidden rounded-xl bg-surface shadow-border md:max-w-2xl lg:max-w-3xl">
+      <aside role="dialog" aria-modal="true" aria-labelledby="claimflow-book-title" className="relative flex max-h-[82dvh] w-full max-w-lg flex-col overflow-hidden rounded-xl bg-surface shadow-border md:max-w-2xl lg:max-w-3xl">
         <header className="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
           <div>
             <p className="text-sm font-semibold text-muted">Your houses</p>
-            <h2 className="font-display mt-1 text-2xl leading-tight text-fg">Saved on this device</h2>
+            <h2 id="claimflow-book-title" className="font-display mt-1 text-2xl leading-tight text-fg">Saved on this device</h2>
             <p className="mt-1 text-sm text-muted">Drafts and reports stay in this browser. Nothing is uploaded.</p>
           </div>
           <button
