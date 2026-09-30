@@ -31,10 +31,10 @@ export function RoofIntake() {
   }, [operatorName, name]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 z-20 overflow-y-auto px-5 pt-[calc(8.5rem+env(safe-area-inset-top))] pb-40">
+    <div className="pointer-events-none absolute inset-0 z-20 overflow-y-auto px-4 pt-[calc(8.5rem+env(safe-area-inset-top))] pb-40 sm:px-6 md:pt-[calc(7.75rem+env(safe-area-inset-top))] lg:px-8">
       <form
         id="roof-form"
-        className="pointer-events-auto stagger mx-auto w-full max-w-md pb-6"
+        className="pointer-events-auto stagger mx-auto w-full max-w-md pb-6 md:max-w-xl lg:max-w-2xl"
         onSubmit={(e) => {
           e.preventDefault();
           void startGacc({
@@ -121,7 +121,7 @@ export function RoofIntake() {
         </div>
       </form>
       <div className="pointer-events-auto fixed inset-x-0 bottom-[4.75rem] z-30 px-4 pb-3">
-        <div className="mx-auto max-w-md">
+        <div className="mx-auto max-w-md md:max-w-xl lg:max-w-2xl">
           <Button type="submit" form="roof-form" className="h-12 w-full" disabled={loading}>
             {loading ? "Finding the house" : "Open this roof"}
           </Button>
