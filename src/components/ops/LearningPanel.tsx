@@ -19,7 +19,7 @@ export function LearningPanel() {
   const forecast = forecastOf(site);
 
   return (
-    <aside className="sheet-in pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[52dvh] w-full max-w-lg flex-col overflow-y-auto rounded-t-xl bg-surface p-5 shadow-border">
+    <aside className="sheet-in pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[52dvh] w-full max-w-lg flex-col overflow-y-auto overscroll-contain rounded-t-xl bg-surface p-5 shadow-border md:inset-x-4 md:bottom-24 md:max-h-[68dvh] md:max-w-3xl md:rounded-xl lg:max-w-4xl">
       <div className="flex justify-center pt-0 pb-3">
         <span className="h-1 w-10 rounded-full bg-border" />
       </div>

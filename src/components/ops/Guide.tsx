@@ -15,11 +15,11 @@ export function Guide() {
         aria-label="Close field manual"
         onClick={() => setGuideOpen(false)}
       />
-      <article className="relative flex max-h-[82dvh] w-full max-w-lg flex-col overflow-hidden rounded-xl bg-surface shadow-border">
+      <article role="dialog" aria-modal="true" aria-labelledby="claimflow-guide-title" className="relative flex max-h-[82dvh] w-full max-w-lg flex-col overflow-hidden rounded-xl bg-surface shadow-border md:max-w-2xl lg:max-w-3xl">
         <header className="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
           <div>
             <p className="text-sm font-semibold text-muted">Field manual</p>
-            <h2 className="font-display mt-1 text-2xl leading-tight text-fg">How ClaimFlow works</h2>
+            <h2 id="claimflow-guide-title" className="font-display mt-1 text-2xl leading-tight text-fg">How ClaimFlow works</h2>
           </div>
           <button
             type="button"
@@ -30,7 +30,7 @@ export function Guide() {
             <X className="size-4" />
           </button>
         </header>
-        <div className="min-h-0 flex-1 overflow-y-auto px-5 pb-5">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-5 md:px-7">
           {GUIDE.map((section) => (
             <section key={section.id} className="border-t border-border pt-4 pb-1">
               <h3 className="text-base font-semibold text-fg">{section.title}</h3>

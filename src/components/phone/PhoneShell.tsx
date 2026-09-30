@@ -24,7 +24,7 @@ export function PhoneShell() {
   return (
     <header className="pointer-events-none absolute inset-x-0 top-0 z-30">
       <div className="pointer-events-auto border-b border-border bg-surface pt-[max(0.75rem,env(safe-area-inset-top))]">
-        <div className="flex items-start gap-3 px-4 pb-3">
+        <div className="mx-auto flex w-full max-w-7xl items-start gap-3 px-4 pb-3 sm:px-6 lg:px-8">
           <p className="mt-1 grid size-9 shrink-0 place-items-center rounded-md bg-navy text-xs font-semibold tracking-tight text-fg">
             OP
           </p>
@@ -62,7 +62,7 @@ export function PhoneShell() {
         </div>
       </div>
       <nav
-        className="pointer-events-auto fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+        className="pointer-events-auto fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface pb-[max(0.5rem,env(safe-area-inset-bottom))] md:left-1/2 md:right-auto md:w-[min(44rem,calc(100%-2rem))] md:-translate-x-1/2 md:rounded-t-xl md:border-x"
         aria-label="App"
       >
         <ul className="grid grid-cols-4">
@@ -80,7 +80,7 @@ export function PhoneShell() {
               <li key={item.id}>
                 <p
                   className={cn(
-                    "flex h-14 flex-col items-center justify-center gap-1 text-sm",
+                    "flex h-14 min-h-14 flex-col items-center justify-center gap-1 text-sm md:h-16",
                     on ? "font-medium text-accent" : "text-muted",
                   )}
                 >

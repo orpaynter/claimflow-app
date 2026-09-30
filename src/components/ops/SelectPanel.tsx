@@ -46,7 +46,7 @@ export function SelectPanel() {
   const links = buildLinks(site.place, selected, site.zone);
 
   return (
-    <aside className="sheet-in pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[44dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-xl bg-surface shadow-border">
+    <aside className="sheet-in pointer-events-auto absolute inset-x-0 bottom-[4.75rem] z-20 mx-auto flex max-h-[44dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-xl bg-surface shadow-border md:inset-x-4 md:bottom-24 md:max-h-[58dvh] md:max-w-3xl md:rounded-xl lg:top-[8.5rem] lg:right-4 lg:bottom-24 lg:left-auto lg:max-h-none lg:w-[min(32rem,40vw)] lg:rounded-xl">
       <div className="flex justify-center pt-2">
         <span className="h-1 w-10 rounded-full bg-border" />
       </div>
@@ -57,7 +57,7 @@ export function SelectPanel() {
           {walking ? "Opening the typed lot." : `${hit.length} lots in the swath.`} Color is exposure, not proven damage.
         </p>
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-3">
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-3 md:px-5">
         <ul className="space-y-1">
           {hit.slice(0, 14).map((b) => (
               <li key={b.id}>

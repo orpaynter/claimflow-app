@@ -36,7 +36,7 @@ export function InstallPrompt() {
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-[4.75rem] z-30 px-3">
       <div className="pointer-events-auto mx-auto flex max-w-lg items-center gap-2 rounded-lg bg-navy px-3 py-2 shadow-border">
-        <p className="min-w-0 flex-1 text-sm font-medium text-fg">Install ClaimFlow on this phone</p>
+        <p className="min-w-0 flex-1 text-sm font-medium text-fg">Install ClaimFlow on this device</p>
         <Button
           className="min-h-11 shrink-0 px-3"
           onClick={() => {

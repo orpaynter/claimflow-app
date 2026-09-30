@@ -125,7 +125,7 @@ export function SwarmRail() {
       <button
         type="button"
         className={cn(
-          "inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-md px-2 text-xs",
+          "inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-md px-3 text-xs",
           swarmOpen ? "bg-bg text-fg" : "text-muted hover:text-fg",
         )}
         onClick={() => setSwarmOpen(!swarmOpen)}
@@ -146,7 +146,7 @@ export function SwarmRail() {
               setSwarmOpen(true);
             }}
             className={cn(
-              "min-h-9 shrink-0 rounded-md px-2 font-mono text-[10px] tracking-wide uppercase",
+              "min-h-11 shrink-0 rounded-md px-3 font-mono text-[10px] tracking-wide uppercase",
               focusAgent === id && swarmOpen ? "bg-accent text-accent-fg" : "text-muted hover:text-fg",
             )}
           >
@@ -178,7 +178,7 @@ export function SwarmDeck() {
   const runtime = swarm.agents[id];
 
   return (
-    <aside className="pointer-events-auto absolute top-36 right-3 bottom-24 left-3 z-40 flex max-w-lg flex-col overflow-hidden rounded-lg bg-surface/96 shadow-border backdrop-blur-sm sm:left-auto sm:right-5">
+    <aside className="pointer-events-auto absolute top-36 right-3 bottom-24 left-3 z-40 flex max-w-lg flex-col overflow-hidden rounded-lg bg-surface/96 shadow-border backdrop-blur-sm sm:left-auto sm:right-5 md:max-w-2xl lg:max-w-3xl">
       <div className="flex items-start justify-between gap-2 px-4 pt-4 pb-2">
         <div>
           <p className="text-xs tracking-[0.16em] text-muted uppercase">Multi-agent system</p>
@@ -209,7 +209,7 @@ export function SwarmDeck() {
             type="button"
             onClick={() => setTab(t)}
             className={cn(
-              "min-h-9 shrink-0 rounded-full px-3 font-mono text-[10px] tracking-wide uppercase",
+              "min-h-11 shrink-0 rounded-full px-3 font-mono text-[10px] tracking-wide uppercase",
               tab === t ? "bg-accent text-accent-fg" : "text-subtle hover:text-fg",
             )}
           >

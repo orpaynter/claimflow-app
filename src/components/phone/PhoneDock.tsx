@@ -37,7 +37,7 @@ export function PhoneDock() {
 
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-[4.75rem] z-30 px-3 pb-[max(0.25rem,env(safe-area-inset-bottom))]">
-      <div className="pointer-events-auto mx-auto flex max-w-lg flex-col gap-2">
+      <div className="pointer-events-auto mx-auto flex max-w-lg flex-col gap-2 md:max-w-2xl lg:max-w-3xl">
         {loadError ? <p className="rounded-md bg-surface px-3 py-2 text-base text-danger shadow-border">{loadError}</p> : null}
         {c.action && c.actionKind !== "dispatch" && c.actionKind !== "stop" ? (
           <Button className="w-full" onClick={run} disabled={disabled}>

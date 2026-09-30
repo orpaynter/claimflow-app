@@ -2,6 +2,7 @@ import { HelpCircle, Paperclip } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLot } from "@/lib/house/store";
+import { useGaccRun } from "@/lib/gacc/store";
 
 export function RoofIntake() {
   const hydrateBook = useLot((s) => s.hydrateBook);
@@ -13,6 +14,7 @@ export function RoofIntake() {
   const setGuideOpen = useLot((s) => s.setGuideOpen);
   const setBookOpen = useLot((s) => s.setBookOpen);
   const book = useLot((s) => s.book);
+  const startGacc = useGaccRun((s) => s.start);
 
   const [name, setName] = useState(operatorName);
   const [address, setAddress] = useState("");
@@ -29,12 +31,18 @@ export function RoofIntake() {
   }, [operatorName, name]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 z-20 overflow-y-auto px-5 pt-[calc(8.5rem+env(safe-area-inset-top))] pb-40">
+    <div className="pointer-events-none absolute inset-0 z-20 overflow-y-auto px-4 pt-[calc(8.5rem+env(safe-area-inset-top))] pb-40 sm:px-6 md:pt-[calc(7.75rem+env(safe-area-inset-top))] lg:px-8">
       <form
         id="roof-form"
-        className="pointer-events-auto stagger mx-auto w-full max-w-md pb-6"
+        className="pointer-events-auto stagger mx-auto w-full max-w-md pb-6 md:max-w-xl lg:max-w-2xl"
         onSubmit={(e) => {
           e.preventDefault();
+          void startGacc({
+            operatorName: name.trim(),
+            address: address.trim(),
+            note: note.trim(),
+            evidenceNames: files.map((file) => file.name),
+          });
           startRoof({ name, address, note, files });
         }}
       >
@@ -108,12 +116,12 @@ export function RoofIntake() {
             Your houses{book.length ? ` (${book.length})` : ""}
           </Button>
           <Button type="button" variant="outline" onClick={() => window.location.assign("/?install=1")}>
-            Install on phone
+            Install app
           </Button>
         </div>
       </form>
       <div className="pointer-events-auto fixed inset-x-0 bottom-[4.75rem] z-30 px-4 pb-3">
-        <div className="mx-auto max-w-md">
+        <div className="mx-auto max-w-md md:max-w-xl lg:max-w-2xl">
           <Button type="submit" form="roof-form" className="h-12 w-full" disabled={loading}>
             {loading ? "Finding the house" : "Open this roof"}
           </Button>
