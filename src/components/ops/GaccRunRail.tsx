@@ -15,7 +15,7 @@ export function GaccRunRail() {
   const passed = status === "passed" && run?.pass;
 
   return (
-    <aside className="pointer-events-auto absolute inset-x-3 top-[7.65rem] z-40 mx-auto max-w-2xl overflow-hidden rounded-lg bg-surface/96 shadow-border backdrop-blur-sm md:top-[7.2rem] md:max-w-3xl lg:max-w-5xl">
+    <aside aria-live="polite" aria-atomic="false" className="pointer-events-auto absolute inset-x-3 top-[7.65rem] z-40 mx-auto max-w-2xl overflow-hidden rounded-lg bg-surface/96 shadow-border backdrop-blur-sm md:top-[7.2rem] md:max-w-3xl lg:max-w-5xl">
       <div className="flex min-h-12 items-center gap-3 px-3">
         {status === "running" ? (
           <LoaderCircle className="size-4 shrink-0 animate-spin text-accent" />
