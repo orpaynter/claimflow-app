@@ -116,7 +116,7 @@ export function RoofIntake() {
             Your houses{book.length ? ` (${book.length})` : ""}
           </Button>
           <Button type="button" variant="outline" onClick={() => window.location.assign("/?install=1")}>
-            Install on phone
+            Install app
           </Button>
         </div>
       </form>
