@@ -51,7 +51,7 @@ export function Report() {
         aria-label="Close report"
         onClick={() => setReportOpen(false)}
       />
-      <article className="relative flex max-h-[78dvh] w-full max-w-md flex-col overflow-hidden rounded-xl bg-surface shadow-border">
+      <article className="relative flex max-h-[82dvh] w-full max-w-md flex-col overflow-hidden rounded-xl bg-surface shadow-border sm:max-w-xl md:max-w-3xl lg:max-w-4xl">
         <header className="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
           <div>
             <p className="text-xs tracking-[0.16em] text-muted uppercase">DecisionPackage</p>
@@ -70,14 +70,14 @@ export function Report() {
           </div>
           <button
             type="button"
-            className="rounded-md p-2 text-muted hover:text-fg"
+            className="inline-flex size-11 items-center justify-center rounded-md text-muted hover:text-fg"
             onClick={() => setReportOpen(false)}
             aria-label="Close report"
           >
             <X className="size-4" />
           </button>
         </header>
-        <div className="min-h-0 flex-1 overflow-y-auto px-5 pb-5">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-5 md:px-7">
           {brief ? <p className="text-sm leading-relaxed text-pretty text-fg">{brief}</p> : null}
           {outcome ? (
             <section className="mt-5">
