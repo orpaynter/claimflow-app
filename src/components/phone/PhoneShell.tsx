@@ -80,7 +80,7 @@ export function PhoneShell() {
               <li key={item.id}>
                 <p
                   className={cn(
-                    "flex h-14 flex-col items-center justify-center gap-1 text-sm",
+                    "flex h-14 min-h-14 flex-col items-center justify-center gap-1 text-sm md:h-16",
                     on ? "font-medium text-accent" : "text-muted",
                   )}
                 >
