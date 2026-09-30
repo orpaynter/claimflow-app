@@ -51,11 +51,11 @@ export function Report() {
         aria-label="Close report"
         onClick={() => setReportOpen(false)}
       />
-      <article className="relative flex max-h-[82dvh] w-full max-w-md flex-col overflow-hidden rounded-xl bg-surface shadow-border sm:max-w-xl md:max-w-3xl lg:max-w-4xl">
+      <article role="dialog" aria-modal="true" aria-labelledby="claimflow-report-title" className="relative flex max-h-[82dvh] w-full max-w-md flex-col overflow-hidden rounded-xl bg-surface shadow-border sm:max-w-xl md:max-w-3xl lg:max-w-4xl">
         <header className="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
           <div>
             <p className="text-xs tracking-[0.16em] text-muted uppercase">DecisionPackage</p>
-            <h2 className="font-display mt-1 text-2xl leading-tight text-fg">
+            <h2 id="claimflow-report-title" className="font-display mt-1 text-2xl leading-tight text-fg">
               {spec.number} {spec.street}
             </h2>
             <p className="mt-1 text-xs text-muted">
