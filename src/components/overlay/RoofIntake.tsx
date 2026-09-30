@@ -2,6 +2,7 @@ import { HelpCircle, Paperclip } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLot } from "@/lib/house/store";
+import { useGaccRun } from "@/lib/gacc/store";
 
 export function RoofIntake() {
   const hydrateBook = useLot((s) => s.hydrateBook);
@@ -13,6 +14,7 @@ export function RoofIntake() {
   const setGuideOpen = useLot((s) => s.setGuideOpen);
   const setBookOpen = useLot((s) => s.setBookOpen);
   const book = useLot((s) => s.book);
+  const startGacc = useGaccRun((s) => s.start);
 
   const [name, setName] = useState(operatorName);
   const [address, setAddress] = useState("");
@@ -35,6 +37,12 @@ export function RoofIntake() {
         className="pointer-events-auto stagger mx-auto w-full max-w-md pb-6"
         onSubmit={(e) => {
           e.preventDefault();
+          void startGacc({
+            operatorName: name.trim(),
+            address: address.trim(),
+            note: note.trim(),
+            evidenceNames: files.map((file) => file.name),
+          });
           startRoof({ name, address, note, files });
         }}
       >
