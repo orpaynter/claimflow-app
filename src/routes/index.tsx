@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { BookPanel } from "@/components/ops/BookPanel";
 import { Guide } from "@/components/ops/Guide";
+import { GaccRunRail } from "@/components/ops/GaccRunRail";
 import { LearningPanel } from "@/components/ops/LearningPanel";
 import { MeasurePanel } from "@/components/ops/MeasurePanel";
 import { OpsLoop } from "@/components/ops/OpsLoop";
@@ -57,6 +58,7 @@ function Home() {
       {!showMap && !showWorld ? <div className="absolute inset-0 bg-bg" /> : null}
       <div className="pointer-events-none absolute inset-0 z-10">
         <PhoneShell />
+        <GaccRunRail />
         {phase === "orbit" ? <RoofIntake /> : null}
         {phase === "track" ? <TrackBanner /> : null}
         {phase === "select" ? <SelectPanel /> : null}
